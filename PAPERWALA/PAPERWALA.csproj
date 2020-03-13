@@ -1,0 +1,569 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C0B0D5E6-F2EF-472E-A665-1FC076398807}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PAPERWALA</RootNamespace>
+    <AssemblyName>PAPERWALA</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.60.6\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\PAPERWALA.dll" />
+    <Content Include="bin\PAPERWALA.pdb" />
+    <Content Include="Global.asax" />
+    <Content Include="scripts\ai.0.22.9-build00167.js" />
+    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="scripts\jquery-1.8.2.js" />
+    <Content Include="scripts\jquery-1.8.2.min.js" />
+    <Content Include="Template\dist\css\theme.css" />
+    <Content Include="Template\dist\css\theme.min.css" />
+    <Content Include="Template\dist\img\brand-white.svg" />
+    <Content Include="Template\dist\img\brand.svg" />
+    <Content Include="Template\dist\img\down-arrow.svg" />
+    <Content Include="Template\dist\js\theme.js" />
+    <Content Include="Template\dist\js\theme.min.js" />
+    <Content Include="Template\img\auth\login-bg.jpg" />
+    <Content Include="Template\img\auth\register-bg.jpg" />
+    <Content Include="Template\img\big\img1.jpg" />
+    <Content Include="Template\img\big\img2.jpg" />
+    <Content Include="Template\img\big\img3.jpg" />
+    <Content Include="Template\img\big\img4.jpg" />
+    <Content Include="Template\img\big\img5.jpg" />
+    <Content Include="Template\img\big\img6.jpg" />
+    <Content Include="Template\img\credit\american-express.png" />
+    <Content Include="Template\img\credit\mastercard.png" />
+    <Content Include="Template\img\credit\paypal2.png" />
+    <Content Include="Template\img\credit\visa.png" />
+    <Content Include="Template\img\navbar\blue.jpg" />
+    <Content Include="Template\img\navbar\dark.jpg" />
+    <Content Include="Template\img\navbar\green.jpg" />
+    <Content Include="Template\img\navbar\light.jpg" />
+    <Content Include="Template\img\navbar\orange.jpg" />
+    <Content Include="Template\img\navbar\purple.jpg" />
+    <Content Include="Template\img\navbar\red.jpg" />
+    <Content Include="Template\img\placeholder\placeimg_400_200_nature.jpg" />
+    <Content Include="Template\img\portfolio-1.jpg" />
+    <Content Include="Template\img\portfolio-10.jpg" />
+    <Content Include="Template\img\portfolio-11.jpg" />
+    <Content Include="Template\img\portfolio-12.jpg" />
+    <Content Include="Template\img\portfolio-2.jpg" />
+    <Content Include="Template\img\portfolio-3.jpg" />
+    <Content Include="Template\img\portfolio-4.jpg" />
+    <Content Include="Template\img\portfolio-5.jpg" />
+    <Content Include="Template\img\portfolio-6.jpg" />
+    <Content Include="Template\img\portfolio-7.jpg" />
+    <Content Include="Template\img\portfolio-8.jpg" />
+    <Content Include="Template\img\portfolio-9.jpg" />
+    <Content Include="Template\img\user.jpg" />
+    <Content Include="Template\img\user1.jpg" />
+    <Content Include="Template\img\user2.jpg" />
+    <Content Include="Template\img\user3.jpg" />
+    <Content Include="Template\img\users\1.jpg" />
+    <Content Include="Template\img\users\2.jpg" />
+    <Content Include="Template\img\users\3.jpg" />
+    <Content Include="Template\img\users\4.jpg" />
+    <Content Include="Template\img\users\5.jpg" />
+    <Content Include="Template\img\widget\p1.jpg" />
+    <Content Include="Template\img\widget\p2.jpg" />
+    <Content Include="Template\img\widget\p3.jpg" />
+    <Content Include="Template\img\widget\p4.jpg" />
+    <Content Include="Template\js\alerts.js" />
+    <Content Include="Template\js\calendar.js" />
+    <Content Include="Template\js\carousel.js" />
+    <Content Include="Template\js\chart-amcharts.js" />
+    <Content Include="Template\js\chart-chartist.js" />
+    <Content Include="Template\js\chart-flot.js" />
+    <Content Include="Template\js\chart-knob.js" />
+    <Content Include="Template\js\charts.js" />
+    <Content Include="Template\js\datatables.js" />
+    <Content Include="Template\js\form-advanced.js" />
+    <Content Include="Template\js\form-components.js" />
+    <Content Include="Template\js\form-picker.js" />
+    <Content Include="Template\js\forms.js" />
+    <Content Include="Template\js\layouts.js" />
+    <Content Include="Template\js\range-slider.js" />
+    <Content Include="Template\js\rating.js" />
+    <Content Include="Template\js\session-time-out.js" />
+    <Content Include="Template\js\tables.js" />
+    <Content Include="Template\js\taskboard.js" />
+    <Content Include="Template\js\widget-chart.js" />
+    <Content Include="Template\js\widget-data.js" />
+    <Content Include="Template\js\widget-statistic.js" />
+    <Content Include="Template\js\widgets.js" />
+    <Content Include="Template\plugins\amcharts\amcharts.js" />
+    <Content Include="Template\plugins\amcharts\animate.min.js" />
+    <Content Include="Template\plugins\amcharts\funnel.js" />
+    <Content Include="Template\plugins\amcharts\gantt.js" />
+    <Content Include="Template\plugins\amcharts\gauge.js" />
+    <Content Include="Template\plugins\amcharts\images\dragIconRoundBig.png" />
+    <Content Include="Template\plugins\amcharts\images\dragIconRoundBig.svg" />
+    <Content Include="Template\plugins\amcharts\images\lens.png" />
+    <Content Include="Template\plugins\amcharts\images\lens.svg" />
+    <Content Include="Template\plugins\amcharts\pie.js" />
+    <Content Include="Template\plugins\amcharts\radar.js" />
+    <Content Include="Template\plugins\amcharts\serial.js" />
+    <Content Include="Template\plugins\amcharts\themes\black.js" />
+    <Content Include="Template\plugins\amcharts\themes\chalk.js" />
+    <Content Include="Template\plugins\amcharts\themes\dark.js" />
+    <Content Include="Template\plugins\amcharts\themes\light.js" />
+    <Content Include="Template\plugins\amcharts\themes\patterns.js" />
+    <Content Include="Template\plugins\amcharts\xy.js" />
+    <Content Include="Template\plugins\ammap3\ammap\ammap.css" />
+    <Content Include="Template\plugins\ammap3\ammap\ammap.js" />
+    <Content Include="Template\plugins\ammap3\ammap\ammap_amcharts_extension.js" />
+    <Content Include="Template\plugins\ammap3\ammap\maps\js\usaLow.js" />
+    <Content Include="Template\plugins\bootstrap-slider\dist\bootstrap-slider.min.js" />
+    <Content Include="Template\plugins\bootstrap-slider\dist\css\bootstrap-slider.min.css" />
+    <Content Include="Template\plugins\bootstrap-tagsinput\dist\bootstrap-tagsinput.css" />
+    <Content Include="Template\plugins\bootstrap-tagsinput\dist\bootstrap-tagsinput.min.js" />
+    <Content Include="Template\plugins\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="Template\plugins\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="Template\plugins\c3\c3.min.css" />
+    <Content Include="Template\plugins\c3\c3.min.js" />
+    <Content Include="Template\plugins\chartist\dist\chartist.min.css" />
+    <Content Include="Template\plugins\chartist\dist\chartist.min.js" />
+    <Content Include="Template\plugins\d3\dist\d3.js" />
+    <Content Include="Template\plugins\d3\dist\d3.min.js" />
+    <Content Include="Template\plugins\d3\dist\d3.node.js" />
+    <Content Include="Template\plugins\d3\dist\package.js" />
+    <Content Include="Template\plugins\datatables.net-bs4\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Template\plugins\datatables.net-bs4\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Template\plugins\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css" />
+    <Content Include="Template\plugins\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js" />
+    <Content Include="Template\plugins\datatables.net-responsive\js\dataTables.responsive.min.js" />
+    <Content Include="Template\plugins\datatables.net\js\jquery.dataTables.min.js" />
+    <Content Include="Template\plugins\datedropper\datedropper.min.css" />
+    <Content Include="Template\plugins\datedropper\datedropper.min.js" />
+    <Content Include="Template\plugins\flot-charts\curvedLines.js" />
+    <Content Include="Template\plugins\flot-charts\jquery.flot.categories.js" />
+    <Content Include="Template\plugins\flot-charts\jquery.flot.js" />
+    <Content Include="Template\plugins\flot-charts\jquery.flot.pie.js" />
+    <Content Include="Template\plugins\flot-charts\jquery.flot.tooltip.min.js" />
+    <Content Include="Template\plugins\fontawesome-free\css\all.min.css" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-brands-400.svg" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-regular-400.svg" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-solid-900.svg" />
+    <Content Include="Template\plugins\fullcalendar\dist\fullcalendar.min.css" />
+    <Content Include="Template\plugins\fullcalendar\dist\fullcalendar.min.js" />
+    <Content Include="Template\plugins\icon-kit\dist\css\iconkit.min.css" />
+    <Content Include="Template\plugins\icon-kit\dist\fonts\iconkit.svg" />
+    <Content Include="Template\plugins\ionicons\dist\css\ionicons.min.css" />
+    <Content Include="Template\plugins\ionicons\dist\fonts\ionicons.svg" />
+    <Content Include="Template\plugins\jquery-bar-rating\dist\jquery.barrating.min.js" />
+    <Content Include="Template\plugins\jquery-bar-rating\dist\themes\bars-1to10.css" />
+    <Content Include="Template\plugins\jquery-bar-rating\dist\themes\bars-horizontal.css" />
+    <Content Include="Template\plugins\jquery-bar-rating\dist\themes\bars-movie.css" />
+    <Content Include="Template\plugins\jquery-bar-rating\dist\themes\bars-pill.css" />
+    <Content Include="Template\plugins\jquery-bar-rating\dist\themes\bars-reversed.css" />
+    <Content Include="Template\plugins\jquery-bar-rating\dist\themes\bars-square.css" />
+    <Content Include="Template\plugins\jquery-bar-rating\dist\themes\bootstrap-stars.css" />
+    <Content Include="Template\plugins\jquery-bar-rating\dist\themes\css-stars.css" />
+    <Content Include="Template\plugins\jquery-bar-rating\dist\themes\fontawesome-stars-o.css" />
+    <Content Include="Template\plugins\jquery-bar-rating\dist\themes\fontawesome-stars.css" />
+    <Content Include="Template\plugins\jquery-knob\dist\jquery.knob.min.js" />
+    <Content Include="Template\plugins\jquery-minicolors\jquery.minicolors.css" />
+    <Content Include="Template\plugins\jquery-minicolors\jquery.minicolors.min.js" />
+    <Content Include="Template\plugins\jquery-minicolors\jquery.minicolors.png" />
+    <Content Include="Template\plugins\jquery-toast-plugin\dist\jquery.toast.min.css" />
+    <Content Include="Template\plugins\jquery-toast-plugin\dist\jquery.toast.min.js" />
+    <Content Include="Template\plugins\jquery.repeater\jquery.repeater.min.js" />
+    <Content Include="Template\plugins\jvectormap\jquery-jvectormap.css" />
+    <Content Include="Template\plugins\jvectormap\jquery-jvectormap.min.js" />
+    <Content Include="Template\plugins\mohithg-switchery\dist\switchery.min.css" />
+    <Content Include="Template\plugins\mohithg-switchery\dist\switchery.min.js" />
+    <Content Include="Template\plugins\moment\moment.js" />
+    <Content Include="Template\plugins\nestable\jquery.nestable.js" />
+    <Content Include="Template\plugins\owl.carousel\dist\assets\ajax-loader.gif" />
+    <Content Include="Template\plugins\owl.carousel\dist\assets\owl.carousel.min.css" />
+    <Content Include="Template\plugins\owl.carousel\dist\assets\owl.theme.default.min.css" />
+    <Content Include="Template\plugins\owl.carousel\dist\assets\owl.video.play.png" />
+    <Content Include="Template\plugins\owl.carousel\dist\owl.carousel.min.js" />
+    <Content Include="Template\plugins\perfect-scrollbar\css\perfect-scrollbar.css" />
+    <Content Include="Template\plugins\perfect-scrollbar\dist\perfect-scrollbar.min.js" />
+    <Content Include="Template\plugins\popper.js\dist\umd\popper.min.js" />
+    <Content Include="Template\plugins\screenfull\dist\screenfull.js" />
+    <Content Include="Template\plugins\select2\dist\css\select2.min.css" />
+    <Content Include="Template\plugins\select2\dist\js\select2.min.js" />
+    <Content Include="Template\plugins\summernote\dist\summernote-bs4.css" />
+    <Content Include="Template\plugins\summernote\dist\summernote-bs4.min.js" />
+    <Content Include="Template\plugins\sweetalert\dist\sweetalert.min.js" />
+    <Content Include="Template\plugins\tempusdominus-bootstrap-4\build\css\tempusdominus-bootstrap-4.min.css" />
+    <Content Include="Template\plugins\tempusdominus-bootstrap-4\build\js\tempusdominus-bootstrap-4.min.js" />
+    <Content Include="Template\plugins\weather-icons\css\weather-icons.min.css" />
+    <Content Include="Template\plugins\weather-icons\font\weathericons-regular-webfont.svg" />
+    <Content Include="Template\src\img\brand-white.svg" />
+    <Content Include="Template\src\img\brand.svg" />
+    <Content Include="Template\src\img\down-arrow.svg" />
+    <Content Include="Template\src\img\logo.svg" />
+    <Content Include="Template\src\js\theme.js" />
+    <Content Include="Template\src\js\theme.min.js" />
+    <Content Include="Template\src\js\vendor\jquery-3.3.1.min.js" />
+    <Content Include="Template\src\js\vendor\jquery-3.3.1.slim.min.js" />
+    <Content Include="Template\src\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="Views\DistributorSale\AddProduct.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DesignationController.cs" />
+    <Compile Include="Controllers\DistributorController.cs" />
+    <Compile Include="Controllers\DistributorReturnController.cs" />
+    <Compile Include="Controllers\DistributorSaleController.cs" />
+    <Compile Include="Controllers\DistributorTransactionController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginDistributorController.cs" />
+    <Compile Include="Controllers\PaperController.cs" />
+    <Compile Include="Controllers\PaperRateController.cs" />
+    <Compile Include="Controllers\RetailerController.cs" />
+    <Compile Include="Controllers\SellerMasterController.cs" />
+    <Compile Include="Controllers\StateController.cs" />
+    <Compile Include="Controllers\WebDistributorController.cs" />
+    <Compile Include="Controllers\WEBDISTRIBUTORTRController.cs" />
+    <Compile Include="Controllers\WebLoginDistributorController.cs" />
+    <Compile Include="Controllers\WebMastersController.cs" />
+    <Compile Include="Filters\MyErrorHandler.cs" />
+    <Compile Include="Filters\MyExceptionHandler.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CityDTO.cs" />
+    <Compile Include="Models\DesignationDTO.cs" />
+    <Compile Include="Models\DisctributorSaleProductDTO.cs" />
+    <Compile Include="Models\DistributorDTO.cs" />
+    <Compile Include="Models\DistributorMainSaleDTO.cs" />
+    <Compile Include="Models\DistributorReturnDTO.cs" />
+    <Compile Include="Models\DistributorSaleDTO.cs" />
+    <Compile Include="Models\DistributorTransactionDTO.cs" />
+    <Compile Include="Models\LineDTO.cs" />
+    <Compile Include="Models\LoginDistributorDTO.cs" />
+    <Compile Include="Models\PaperDTO.cs" />
+    <Compile Include="Models\PaperRateCallDTO.cs" />
+    <Compile Include="Models\PaperRateDTO.cs" />
+    <Compile Include="Models\RetailerDTO.cs" />
+    <Compile Include="Models\SellerDTO.cs" />
+    <Compile Include="Models\StateDTO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CityMaster.cs" />
+    <Compile Include="Repository\DesignationMaster.cs" />
+    <Compile Include="Repository\DistributorMainSale.cs" />
+    <Compile Include="Repository\DistributorMaster.cs" />
+    <Compile Include="Repository\DistributorReturn.cs" />
+    <Compile Include="Repository\DistributorSale.cs" />
+    <Compile Include="Repository\DistributorSaleProduct.cs" />
+    <Compile Include="Repository\DistributorTransactions.cs" />
+    <Compile Include="Repository\ICityMaster.cs" />
+    <Compile Include="Repository\IDesignationMaster.cs" />
+    <Compile Include="Repository\IDistributorMainSale.cs" />
+    <Compile Include="Repository\IDistributorMaster.cs" />
+    <Compile Include="Repository\IDistributorReturn.cs" />
+    <Compile Include="Repository\IDistributorSale.cs" />
+    <Compile Include="Repository\IDistributorSaleProduct.cs" />
+    <Compile Include="Repository\IDistributorTransactions.cs" />
+    <Compile Include="Repository\ILoginDistributor.cs" />
+    <Compile Include="Repository\IPaperMaster.cs" />
+    <Compile Include="Repository\IPaperRateMaster.cs" />
+    <Compile Include="Repository\IRetailerMaster.cs" />
+    <Compile Include="Repository\ISellerMaster.cs" />
+    <Compile Include="Repository\IStateMaster.cs" />
+    <Compile Include="Repository\LoginDistributor.cs" />
+    <Compile Include="Repository\PaperMaster.cs" />
+    <Compile Include="Repository\PaperRateMaster.cs" />
+    <Compile Include="Repository\RetailerMaster.cs" />
+    <Compile Include="Repository\SellerMaster.cs" />
+    <Compile Include="Repository\StateMaster.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Shared\_LayoutAdminMain.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\State\Create.cshtml" />
+    <Content Include="Views\LoginDistributor\LoginDistributor.cshtml" />
+    <Content Include="Views\Dashboard\AdminDashboard.cshtml" />
+    <Content Include="Views\State\Details.cshtml" />
+    <Content Include="Views\State\Edit.cshtml" />
+    <Content Include="Views\City\Create.cshtml" />
+    <Content Include="Views\City\Details.cshtml" />
+    <Content Include="Views\City\Edit.cshtml" />
+    <Content Include="Views\Paper\Create.cshtml" />
+    <Content Include="Views\Paper\Details.cshtml" />
+    <Content Include="Views\Paper\Edit.cshtml" />
+    <Content Include="Views\Designation\Create.cshtml" />
+    <Content Include="Views\Designation\Details.cshtml" />
+    <Content Include="Views\Designation\Edit.cshtml" />
+    <Content Include="Views\PaperRate\Create.cshtml" />
+    <Content Include="Views\PaperRate\Details.cshtml" />
+    <Content Include="Views\PaperRate\Edit.cshtml" />
+    <Content Include="Views\Retailer\Details.cshtml" />
+    <Content Include="Views\Retailer\Create.cshtml" />
+    <Content Include="Views\Retailer\Edit.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\swapnil.pubxml" />
+    <Content Include="Template\dist\css\theme.css.map" />
+    <Content Include="Template\dist\css\theme.min.css.map" />
+    <Content Include="Template\dist\img\.gitignore" />
+    <Content Include="Template\package-lock.json" />
+    <Content Include="Template\package.json" />
+    <Content Include="Template\plugins\bootstrap-tagsinput\dist\bootstrap-tagsinput.min.js.map" />
+    <Content Include="Template\plugins\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="Template\plugins\bootstrap\dist\js\bootstrap.min.js.map" />
+    <Content Include="Template\plugins\chartist\dist\chartist.min.js.map" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-brands-400.eot" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-brands-400.ttf" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-brands-400.woff" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-brands-400.woff2" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-regular-400.eot" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-regular-400.ttf" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-regular-400.woff" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-regular-400.woff2" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-solid-900.eot" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-solid-900.ttf" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-solid-900.woff" />
+    <Content Include="Template\plugins\fontawesome-free\webfonts\fa-solid-900.woff2" />
+    <Content Include="Template\plugins\icon-kit\dist\fonts\iconkit.eot" />
+    <Content Include="Template\plugins\icon-kit\dist\fonts\iconkit.otf" />
+    <Content Include="Template\plugins\icon-kit\dist\fonts\iconkit.ttf" />
+    <Content Include="Template\plugins\icon-kit\dist\fonts\iconkit.woff" />
+    <Content Include="Template\plugins\icon-kit\dist\fonts\iconkit.woff2" />
+    <Content Include="Template\plugins\ionicons\dist\fonts\ionicons.eot" />
+    <Content Include="Template\plugins\ionicons\dist\fonts\ionicons.ttf" />
+    <Content Include="Template\plugins\ionicons\dist\fonts\ionicons.woff" />
+    <Content Include="Template\plugins\ionicons\dist\fonts\ionicons.woff2" />
+    <Content Include="Template\plugins\jquery-bar-rating\dist\jquery.barrating.min.js.map" />
+    <Content Include="Template\plugins\popper.js\dist\umd\popper.min.js.map" />
+    <Content Include="Template\plugins\summernote\.editorconfig" />
+    <Content Include="Template\plugins\summernote\.eslintrc" />
+    <Content Include="Template\plugins\summernote\dist\font\summernote.eot" />
+    <Content Include="Template\plugins\summernote\dist\font\summernote.ttf" />
+    <Content Include="Template\plugins\summernote\dist\font\summernote.woff" />
+    <Content Include="Template\plugins\weather-icons\font\weathericons-regular-webfont.eot" />
+    <Content Include="Template\plugins\weather-icons\font\weathericons-regular-webfont.ttf" />
+    <Content Include="Template\plugins\weather-icons\font\weathericons-regular-webfont.woff" />
+    <Content Include="Template\plugins\weather-icons\font\WeatherIcons-Regular.otf" />
+    <Content Include="Template\src\img\.gitignore" />
+    <Content Include="Template\src\scss\theme.scss" />
+    <Content Include="Template\src\scss\_alert.scss" />
+    <Content Include="Template\src\scss\_auth.scss" />
+    <Content Include="Template\src\scss\_badges.scss" />
+    <Content Include="Template\src\scss\_buttons.scss" />
+    <Content Include="Template\src\scss\_calendar.scss" />
+    <Content Include="Template\src\scss\_cards.scss" />
+    <Content Include="Template\src\scss\_carousel.scss" />
+    <Content Include="Template\src\scss\_forms.scss" />
+    <Content Include="Template\src\scss\_layout.scss" />
+    <Content Include="Template\src\scss\_main.scss" />
+    <Content Include="Template\src\scss\_mixins.scss" />
+    <Content Include="Template\src\scss\_modal.scss" />
+    <Content Include="Template\src\scss\_navigation.scss" />
+    <Content Include="Template\src\scss\_range-slider.scss" />
+    <Content Include="Template\src\scss\_rating.scss" />
+    <Content Include="Template\src\scss\_settings.scss" />
+    <Content Include="Template\src\scss\_tables.scss" />
+    <Content Include="Template\src\scss\_widgets.scss" />
+    <Content Include="Views\DistributorTransaction\Create.cshtml" />
+    <Content Include="Views\DistributorTransaction\Details.cshtml" />
+    <Content Include="Views\Distributor\Details.cshtml" />
+    <Content Include="Views\Distributor\Create.cshtml" />
+    <Content Include="Views\Distributor\Edit.cshtml" />
+    <Content Include="Views\DistributorSale\Create.cshtml" />
+    <Content Include="Views\DistributorSale\BindProduct.cshtml" />
+    <Content Include="Views\DistributorSale\AddProductT.cshtml" />
+    <Content Include="Views\DistributorSale\BindProductT.cshtml" />
+    <Content Include="Views\DistributorSale\UpdateDistTrans.cshtml" />
+    <Content Include="Views\DistributorSale\Details.cshtml" />
+    <Content Include="Views\Distributor\DistributorChangePassword.cshtml" />
+    <Content Include="Views\SellerMaster\Create.cshtml" />
+    <Content Include="Views\SellerMaster\Edit.cshtml" />
+    <Content Include="Views\SellerMaster\Details.cshtml" />
+    <Content Include="Views\SellerMaster\SellerChangePassword.cshtml" />
+    <Content Include="Views\DistributorReturn\Create.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\AdminDashboard\" />
+    <Folder Include="Views\DistributorMainSale\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50233</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50233/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

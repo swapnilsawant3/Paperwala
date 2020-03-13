@@ -1,0 +1,173 @@
+﻿@model PAPERWALA.Models.DistributorSaleProductDTO
+@{
+    ViewBag.Title = "Create Sale";
+    Layout = "~/Views/Shared/_LayoutAdminMain.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+      $(document).ready(function () {
+          var a = '@Session["TransDate"]';
+         alert(a);
+      })
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#divBindItem').load('@Url.Action("BindProduct", "DistributorSale")');
+    });
+</script>
+
+@*<script type="text/javascript">
+        var tab = '@TempData["BindPapaerTrn"]';
+            $(function () {
+                if (tab == "BindPapaerTrn") {
+                    $('#divBindItem').load('@Url.Action("BindProduct", "DistributorSale")');
+                    alert("Bind");
+                }
+            });
+
+</script>*@
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#PaperId").change(function () {
+
+            $("#PaperRate").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetPaperRate")',
+                dataType: 'json',
+                data: { PaperId: $("#PaperId").val(), Tdate: $("#TransDateP").val() },
+
+                success: function (PaperRatedata) {
+                    document.getElementById('PaperRate').value = PaperRatedata;
+                },
+                error: function (ex) {
+                    alert('No Record Found For This Paper Please Select Another Paper');
+                    document.getElementById('PaperRate').value = 0.0;
+                }
+            });
+            return false;
+        })
+
+
+    });
+
+</script>
+<script type="text/javascript">
+    function AllCalculation()
+    {
+
+        var TxPaperRate = document.getElementById('PaperRate').value;
+        var TxPaperQuantity = document.getElementById('PaperQuantity').value;
+        var TotalPriceR = parseFloat(TxPaperRate) * parseFloat(TxPaperQuantity);
+
+        document.getElementById('TotalPrice').value = TotalPriceR.toFixed(2);
+        var TxPamphletQuantity = document.getElementById('PamphletQuantity').value;
+        var TxPamphletRate = document.getElementById('PamphletRate').value;
+        var TxPaperQuantity = document.getElementById('PaperQuantity').value;
+        var TotalPamphletAmountR = (parseFloat(TxPamphletQuantity) * parseFloat(TxPaperQuantity)) * parseFloat(TxPamphletRate);
+        document.getElementById('TotalPamphletAmount').value = TotalPamphletAmountR.toFixed(2);
+        var TxTotalPrice = document.getElementById('TotalPrice').value;
+        var TxTotalPamphletAmount = document.getElementById('TotalPamphletAmount').value;
+        var TotalFinalAmountR = parseFloat(TxTotalPrice) - parseFloat(TxTotalPamphletAmount);
+        document.getElementById('TotalFinalAmount').value = TotalFinalAmountR.toFixed(2);
+
+        var TxTotalFinalAmount = document.getElementById('TotalFinalAmount').value;
+        var TxPaidAmount = document.getElementById('PaidAmount').value;
+        var BalanceAmountR = parseFloat(TxTotalFinalAmount) - parseFloat(TxPaidAmount);
+        document.getElementById('BalanceAmount').value = BalanceAmountR.toFixed(2);
+        var TxBalanceAmount = document.getElementById('BalanceAmount').value;
+        var TxPrvBalanceAmount = document.getElementById('PrvBalanceAmount').value;
+        var FinalBalaceAmountR = parseFloat(TxBalanceAmount) + parseFloat(TxPrvBalanceAmount);
+        document.getElementById('FinalBalaceAmount').value = FinalBalaceAmountR.toFixed(2);
+    }
+</script>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="forms-sample">
+
+                   
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.TransDateP)
+                                @Html.TextBoxFor(model => model.TransDateP, new { @class = "form-control", @Value = Session["TransDate"] })
+                            </div>
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.SaleOrder)
+                                @Html.TextBoxFor(model => model.SaleOrder, new { @class = "form-control" ,@Value = Session["SaleOrder"] })
+                            </div>
+
+                               
+                                <div class="form-group col-lg-4">
+                                    @Html.LabelFor(model => model.PaperId)
+                                    @Html.DropDownListFor(model => model.PaperId, new SelectList(Model.ListPaperbyDistId, "PaperId", "PaperName"), new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PaperId, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    @Html.LabelFor(model => model.PaperRate)
+                                    @Html.TextBoxFor(model => model.PaperRate, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PaperRate, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+                        <div class="row">
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.PaperQuantity)
+                                @Html.TextBoxFor(model => model.PaperQuantity, new { @class = "form-control", @onchange = "AllCalculation()" })
+                                @Html.ValidationMessageFor(model => model.PaperQuantity, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.TotalPrice)
+                                @Html.TextBoxFor(model => model.TotalPrice, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.TotalPrice, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-1">
+                                @Html.LabelFor(model => model.PamphletQuantity)
+                                @Html.TextBoxFor(model => model.PamphletQuantity, new { @class = "form-control", @onchange = "AllCalculation()" })
+                            </div>
+                            <div class="form-group col-lg-1">
+                                @Html.LabelFor(model => model.PamphletRate)
+                                @Html.TextBoxFor(model => model.PamphletRate, new { @class = "form-control", @Value = ".25" })
+                            </div>
+                            <div class="form-group col-lg-1">
+                                @Html.LabelFor(model => model.TotalPamphletAmount)
+                                @Html.TextBoxFor(model => model.TotalPamphletAmount, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <button class="btn btn-primary" type="submit" style="margin-top: 30px;"><i class="ik ik-clipboard"></i> ADD </button>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-primary" type="submit" style="margin-top: 30px;"><i class="ik ik-clipboard"></i> Submit </button>
+
+                        </div>
+
+
+                    }
+
+                </div>
+
+
+
+            </div>
+            <div class="card-body">
+                <div class="panel panel-default" id="divBindItem">
+                   @*Html.Partial("BindProduct", "DistributorSale");*@
+                   
+                </div>
+            </div></div>
+    </div>
+</div>

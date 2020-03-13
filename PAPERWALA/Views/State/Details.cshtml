@@ -1,0 +1,85 @@
+﻿@model IEnumerable<PAPERWALA.Models.StateDTO>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdminMain.cshtml";
+}
+
+
+
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <i class="ik ik-layers bg-red"></i>
+                <div class="d-inline">
+                    <h5>State Name List</h5>
+                    <span>Here you can see all State Name</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-block">
+                <h3>State Name List  | @Html.ActionLink("Create State", "Create", "State", new { @class = "btn btn-info btn-default" })</h3>
+            </div>
+            <div class="card-body">
+                <div class="dt-responsive">
+                    <table id="simpletable"
+                                                   class="table table-striped table-bordered nowrap">
+                        <thead>
+                            <tr>
+                                <th>State Name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                                
+                            </tr>
+                        </thead>
+                       
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.StateName</td>
+                                        <td>@Html.ActionLink("Edit", "Edit", new { id = @item.StateId })</td>
+                                        <td>@Html.ActionLink("Delete", "Delete", new { id = @item.StateId }, new { onclick = "return confirm('Are you sure you wish to delete this State?');" })</td>
+                                        
+                                        
+                                    </tr>
+                                }
+                            }
+                            @*<tr>
+                                <td>Tiger Nixon</td>
+                                <td>System Architect</td>
+                                <td>Edinburgh</td>
+                                <td>61</td>
+                                <td>2011/04/25</td>
+                                <td>$320,800</td>
+                            </tr>
+                            <tr>
+                                <td>Garrett Winters</td>
+                                <td>Accountant</td>
+                                <td>Tokyo</td>
+                                <td>63</td>
+                                <td>2011/07/25</td>
+                                <td>$170,750</td>
+                            </tr>*@
+                        </tbody>
+
+                       
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

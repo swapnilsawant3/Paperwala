@@ -1,0 +1,71 @@
+﻿@model PAPERWALA.Models.DisctributorSaleProductDTO
+
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+          
+            <div class="card-body">
+                <div class="forms-sample">
+
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.PaperId)
+                                @Html.DropDownListFor(model => model.PaperId, new SelectList(Model.ListPaperbyCityId, "PaperId", "PaperName"), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.PaperId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.PaperRate)
+                                @Html.TextBoxFor(model => model.PaperRate, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.PaperRate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.PaperQuantity)
+                                @Html.TextBoxFor(model => model.PaperQuantity, new { @class = "form-control", @onchange = "AllCalculation()" })
+                                @Html.ValidationMessageFor(model => model.PaperQuantity, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-3">
+                                @Html.LabelFor(model => model.TotalPrice)
+                                @Html.TextBoxFor(model => model.TotalPrice, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.TotalPrice, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-3">
+                                @Html.LabelFor(model => model.PamphletQuantity)
+                                @Html.TextBoxFor(model => model.PamphletQuantity, new { @class = "form-control", @onchange = "AllCalculation()" })
+                            </div>
+                            <div class="form-group col-lg-3">
+                                @Html.LabelFor(model => model.PamphletRate)
+                                @Html.TextBoxFor(model => model.PamphletRate, new { @class = "form-control", @Value = ".25" })
+                            </div>
+                            <div class="form-group col-lg-3">
+                                @Html.LabelFor(model => model.TotalPamphletAmount)
+                                @Html.TextBoxFor(model => model.TotalPamphletAmount, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-primary" type="submit" style="margin-top: 30px;"><i class="ik ik-clipboard"></i> Submit </button>
+                           
+                        </div>
+                      
+
+                    }
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿@model PAPERWALA.Models.CityDTO
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdminMain.cshtml";
+}
+
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <i class="ik ik-edit bg-blue"></i>
+                <div class="d-inline">
+                    <h5>Create City Master</h5>
+                    <span>You can create city with the help of state</span>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+    <div class="col-lg-8">
+        @if (TempData["MessageRegistration"] != null)
+            {
+            <div class="alert  alert-success alert-dismissible" role="alert">
+                @*<span class="badge badge-pill badge-success">Success</span>*@@TempData["MessageRegistration"] 
+                <button type="button" onclick="showSuccessToast()" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-md-11">
+            <div class="card">
+                <div class="card-header"><h3>City Master</h3></div>
+                <div class="card-body">
+                    <div class="forms-sample">
+
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StateName)
+                                @Html.DropDownListFor(model => model.StateId, new SelectList(Model.ListState, "StateId", "StateName"), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CityName)
+                                @Html.TextBoxFor(model => model.CityName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CityName, "", new { @class = "text-danger" })
+                            </div>
+
+                            <button class="btn btn-primary" type="submit"><i class="ik ik-clipboard"></i> Submit </button>
+                            @Html.ActionLink("All Cities", "Details", "City", null, new { @class = "btn btn-danger" })
+                        }
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        </div>
+
+

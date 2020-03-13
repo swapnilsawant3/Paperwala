@@ -1,0 +1,79 @@
+﻿@model IEnumerable<PAPERWALA.Models.SellerDTO>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdminMain.cshtml";
+}
+
+
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <i class="ik ik-layers bg-red"></i>
+                <div class="d-inline">
+                    <h5>Seller Name List</h5>
+                    <span>Here you can see all Seller </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-block">
+                <h3>  Seller List  | <span> @Html.ActionLink("Create Distributor ", "Create", "SellerMaster", new { @class = "btn btn-info btn-default" }) </span></h3>
+            </div>
+            <div class="card-body">
+                <div class="dt-responsive">
+                    <table id="simpletable"
+                           class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Shop Name</th>
+                                <th>Seller Name</th>
+                                <th>Mobile</th>
+                                <th>Address</th>
+                                <th>State</th>
+                                <th>City</th>
+                                <th>Pin</th>
+                                <th>Birthday</th>
+                                @*<th>Balance AMT </th>*@
+                                <th>Edit</th>
+                                <th>Delete </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ShopName</td>
+                                        <td>@item.ShopKeeperName</td>
+                                        <td>@item.MobileNo</td>
+                                        <td>@item.Address</td>
+                                        <td>@item.StateName</td>
+                                        <td>@item.CityName</td>
+                                        <td>@item.Pincode</td>
+                                        <td>@item.DateofBirth</td>
+                                        @*<td>@item.RemainingAMT</td>*@
+
+
+                                        <td>@Html.ActionLink("Edit", "Edit", new { id = @item.ShopkeeperId })</td>
+                                        <td>@Html.ActionLink("Delete", "Delete", new { id = @item.ShopkeeperId }, new { onclick = "return confirm('Are you sure you wish to delete this Seller?');" })</td>
+                                    </tr>
+                                }
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

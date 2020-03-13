@@ -1,0 +1,62 @@
+﻿@model PAPERWALA.Models.StateDTO
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdminMain.cshtml";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <i class="ik ik-edit bg-blue"></i>
+                <div class="d-inline">
+                    <h5>Edit State Master</h5>
+                    <span>You can Edit State for maintain data state wise.</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="col-lg-8">
+    @if (TempData["MessageRegistration"] != null)
+            {
+        <div class="alert  alert-success alert-dismissible" role="alert">
+            @*<span class="badge badge-pill badge-success">Success</span>*@@TempData["MessageRegistration"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-11">
+        <div class="card">
+            <div class="card-header"><h3>State Master</h3></div>
+            <div class="card-body">
+                <div class="forms-sample">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            @Html.HiddenFor(model => model.StateId)
+                            @Html.LabelFor(model => model.StateName)
+                            @Html.TextBoxFor(model => model.StateName, new { @class = "form-control" })
+                            @*@Html.ValidationMessageFor(model => model.StateName, "", new { @class = "text-danger" })*@
+                        </div>
+
+                        <button class="btn btn-primary btn-xs" type="submit"><i class="ik ik-share"></i> Update Info</button>
+                        @Html.ActionLink("All States", "Details", "State", null, new { @class = "btn btn-danger" })
+                    }
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    </div>

@@ -1,0 +1,218 @@
+﻿@model PAPERWALA.Models.DistributorDTO
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdminMain.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#StateId").change(function () {
+
+            $("#CityId").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetCity")',
+                dataType: 'json',
+                data: { StateId: $("#StateId").val() },
+                success: function (citydata) {
+
+                    $("#CityId").append('<option value="' + "0" + '">' + "Select" + '</option>');
+
+                    $.each(citydata, function (i, city) {
+                        $("#CityId").append('<option value="' + city.CityId + '">' + city.CityName + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve City.' + ex);
+                }
+            });
+            return false;
+        })
+
+
+    });
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function () { rebindCity(); });
+</script>
+
+<script type="text/javascript">
+
+    function rebindCity() {
+
+        if ('@ViewData["SelectedCity"]' != '') {
+
+            $("#StateId").val('@Model.StateId');
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetCity")',
+                dataType: 'json',
+                data: {
+                    StateId: $("#StateId").val()
+                },
+                success: function (citydata) {
+
+                    $("#CityId").append('<option value="' + "0" + '">' + "Select" + '</option>');
+
+                    $.each(citydata, function (i, city) {
+                        $("#CityId").append('<option value="' + city.CityId + '">' + city.CityName + '</option>');
+                    });
+
+                    if ('@ViewData["SelectedCity"]' != 0) {
+                        $("#CityId").val('@ViewData["SelectedCity"]');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve City.' + ex);
+                }
+            });
+        }
+    }
+</script>
+
+
+@*//  **  From Start  ** //*@
+
+
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <i class="ik ik-edit bg-blue"></i>
+                <div class="d-inline">
+                    <h5>Create Distributor Master</h5>
+                    <span>You can create Distributor to handle Utility.</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="col-lg-11">
+    @if (TempData["MessageRegistration"] != null)
+            {
+        <div class="alert  alert-success alert-dismissible" role="alert">
+            @*<span class="badge badge-pill badge-success">Success</span>*@@TempData["MessageRegistration"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h3>Distributor Master</h3></div>
+            <div class="card-body">
+                <div class="forms-sample">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.DistributorName)
+                                @Html.TextBoxFor(model => model.DistributorName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.DistributorName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.ContactPersonName)
+                                @Html.TextBoxFor(model => model.ContactPersonName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ContactPersonName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.Address)
+                                @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.Area)
+                                @Html.TextBoxFor(model => model.Area, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.Pincode)
+                                @Html.TextBoxFor(model => model.Pincode, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.MobileNo)
+                                @Html.TextBoxFor(model => model.MobileNo, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.AltMobileNo)
+                                @Html.TextBoxFor(model => model.AltMobileNo, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.DateofBirth)
+                                @Html.TextBoxFor(model => model.DateofBirth, new { @class = "form-control", @type = "date" })
+
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.StateName)
+                                @Html.DropDownListFor(model => model.StateId, new SelectList(Model.ListState, "StateId", "StateName"), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.CityName)
+                                @Html.DropDownListFor(model => model.CityId, new SelectList(Model.ListCity, "CityId", "CityName"), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CityId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.Email)
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.UserName)
+                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.Password)
+                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.StartDate)
+                                @Html.TextBoxFor(model => model.StartDate, new { @class = "form-control", @type = "date" })
+
+                            </div>
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.EndDate)
+                                @Html.TextBoxFor(model => model.EndDate, new { @class = "form-control", @type = "date" })
+
+                            </div>
+                            <br />
+                        </div>
+                        <div class="row">
+                           
+                            <div class="form-group col-lg-4">
+                                <button class="btn btn-primary" style="margin-top:25px;" type="submit"><i class="ik ik-clipboard"></i> Submit Info</button>
+                                @Html.ActionLink("All Distributors", "Details", "Distributor", null, new { @class = "btn btn-success", @style = "margin-top:25px;" })
+                            </div><br />
+                        </div>
+                            }
+
+                        </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
