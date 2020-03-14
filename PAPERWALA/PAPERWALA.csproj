@@ -346,6 +346,7 @@
     <Compile Include="Controllers\DistributorSaleController.cs" />
     <Compile Include="Controllers\DistributorTransactionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LineController.cs" />
     <Compile Include="Controllers\LoginDistributorController.cs" />
     <Compile Include="Controllers\PaperController.cs" />
     <Compile Include="Controllers\PaperRateController.cs" />
@@ -353,6 +354,7 @@
     <Compile Include="Controllers\SellerMasterController.cs" />
     <Compile Include="Controllers\StateController.cs" />
     <Compile Include="Controllers\WebDistributorController.cs" />
+    <Compile Include="Controllers\WebDistributorReturnController.cs" />
     <Compile Include="Controllers\WEBDISTRIBUTORTRController.cs" />
     <Compile Include="Controllers\WebLoginDistributorController.cs" />
     <Compile Include="Controllers\WebMastersController.cs" />
@@ -394,12 +396,14 @@
     <Compile Include="Repository\IDistributorSale.cs" />
     <Compile Include="Repository\IDistributorSaleProduct.cs" />
     <Compile Include="Repository\IDistributorTransactions.cs" />
+    <Compile Include="Repository\ILineMaster.cs" />
     <Compile Include="Repository\ILoginDistributor.cs" />
     <Compile Include="Repository\IPaperMaster.cs" />
     <Compile Include="Repository\IPaperRateMaster.cs" />
     <Compile Include="Repository\IRetailerMaster.cs" />
     <Compile Include="Repository\ISellerMaster.cs" />
     <Compile Include="Repository\IStateMaster.cs" />
+    <Compile Include="Repository\LineMaster.cs" />
     <Compile Include="Repository\LoginDistributor.cs" />
     <Compile Include="Repository\PaperMaster.cs" />
     <Compile Include="Repository\PaperRateMaster.cs" />
@@ -515,6 +519,12 @@
     <Content Include="Views\SellerMaster\Details.cshtml" />
     <Content Include="Views\SellerMaster\SellerChangePassword.cshtml" />
     <Content Include="Views\DistributorReturn\Create.cshtml" />
+    <Content Include="Views\DistributorReturn\AddProductT.cshtml" />
+    <Content Include="Views\DistributorReturn\BindProduct.cshtml" />
+    <Content Include="Views\DistributorReturn\UpdateDistTrans.cshtml" />
+    <Content Include="Views\Line\Create.cshtml" />
+    <Content Include="Views\Line\Edit.cshtml" />
+    <Content Include="Views\Line\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

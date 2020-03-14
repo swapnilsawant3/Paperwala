@@ -123,7 +123,7 @@ namespace PAPERWALA.Repository
                 con.Open();
                 var para = new DynamicParameters();
                 para.Add("@DistributorId", HttpContext.Current.Session["UserID"]); // Normal Parameters  
-                var ListDistributorTrans = con.Query<DistributorReturnDTO>("select dt.*,rt.RetailerName from Main_DistrbutorReturnInfo AS dt LEFT JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='ACTIVE' and dt.DistributorId=@DistributorId", para, null, true, 0, CommandType.Text).ToList();
+                var ListDistributorTrans = con.Query<DistributorReturnDTO>("select dt.*,rt.RetailerName from Main_DistributorReturnInfo AS dt LEFT JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='ACTIVE' and dt.DistributorId=@DistributorId", para, null, true, 0, CommandType.Text).ToList();
                 return ListDistributorTrans;
             }
             catch (Exception e) { throw; }
@@ -137,7 +137,7 @@ namespace PAPERWALA.Repository
                 con.Open();
                 var para = new DynamicParameters();
                 para.Add("@DistributorId", DistributorId); // Normal Parameters  
-                var ListDistributorTrans = con.Query<DistributorReturnDTO>("select dt.*,rt.RetailerName from Main_DistrbutorReturnInfo AS dt LEFT JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='COMPLETE' and dt.DistributorId=@DistributorId", para, null, true, 0, CommandType.Text).ToList();
+                var ListDistributorTrans = con.Query<DistributorReturnDTO>("select dt.*,rt.RetailerName from Main_DistributorReturnInfo AS dt LEFT JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='COMPLETE' and dt.DistributorId=@DistributorId", para, null, true, 0, CommandType.Text).ToList();
                 return ListDistributorTrans;
             }
             catch (Exception e) { throw; }
@@ -152,7 +152,7 @@ namespace PAPERWALA.Repository
                 var para = new DynamicParameters();
                 para.Add("@DistributorId", DistributorId);
                 para.Add("@ReturnOrder", ReturnOrder);// Normal Parameters  
-                var ListDistributorTrans = con.Query<DistributorReturnDTO>("select dt.*,dp.*,rt.RetailerName from Main_DistrbutorReturnInfo AS dt left join Main_DistrbutorReturnProduct as dp on dt.ReturnOrder=dp.ReturnOrder LEFT JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='COMPLETE' and dt.DistributorId=@DistributorId and dt.ReturnOrder=@ReturnOrder", para, null, true, 0, CommandType.Text).ToList();
+                var ListDistributorTrans = con.Query<DistributorReturnDTO>("select dt.*,dp.*,rt.RetailerName from Main_DistrbutorReturnInfo AS dt left join Main_DistributorReturnProduct as dp on dt.ReturnOrder=dp.ReturnOrder LEFT JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='COMPLETE' and dt.DistributorId=@DistributorId and dt.ReturnOrder=@ReturnOrder", para, null, true, 0, CommandType.Text).ToList();
                 return ListDistributorTrans;
             }
             catch (Exception e) { throw; }
@@ -267,7 +267,7 @@ namespace PAPERWALA.Repository
             con.Open();
             var para = new DynamicParameters();
             para.Add("@ReturnOrder", ReturnOrder); // Normal Parameters  
-            var ListDistributorReturnPRoducts = con.Query<DistributorReturnDTO>("select dt.*,p.PaperName from Main_DistrbutorReturnProduct AS dt left join Mst_Paper as p on dt.PaperId=p.PaperId Where dt.DeleteStatus='ACTIVE' and dt.ReturnOrder=@ReturnOrder", para, null, true, 0, CommandType.Text).ToList();
+            var ListDistributorReturnPRoducts = con.Query<DistributorReturnDTO>("select dt.*,p.PaperName from Main_DistributorReturnProduct AS dt left join Mst_Paper as p on dt.PaperId=p.PaperId Where dt.DeleteStatus='ACTIVE' and dt.ReturnOrder=@ReturnOrder", para, null, true, 0, CommandType.Text).ToList();
             con.Close();
             return ListDistributorReturnPRoducts;
         }

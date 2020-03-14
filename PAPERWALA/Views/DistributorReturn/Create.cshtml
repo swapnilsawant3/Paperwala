@@ -1,8 +1,183 @@
-﻿
+﻿@model PAPERWALA.Models.DistributorReturnDTO
+
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create Return";
     Layout = "~/Views/Shared/_LayoutAdminMain.cshtml";
 }
 
-<h2>Create</h2>
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+    $('.input-group.date').datepicker({ format: "dd/mm/yyyy" });
+</script>
+<script type="text/javascript">
+      $(document).ready(function () {
+          var CD = new Date().toISOString().slice(0, 10)
+
+          document.getElementById('TransDate').value = CD;
+          var result = Math.floor(Math.random() * 9999999999);
+
+          document.getElementById('ReturnOrder').value = result;
+      })
+</script>
+
+
+
+@*<script type="text/javascript">
+        function GetSaleOrder()
+        {
+
+            ////var q = $("#RetailerId option:selected").text();
+            //var p = $("#TransDate").val();
+            //var D = new Date(Date.now());
+            //var H = D.getHours();
+            //var M = D.getMinutes();
+            //var S = D.getSeconds();
+            //var NS = D.getMilliseconds();
+            //var result = "";
+
+            //var arr1 = p.split('-')
+            //var d = arr1[0];
+            //var m = arr1[1];
+            //var y = arr1[2];
+            ////cnt = Number(Data.Count) + 1;
+            //var sup = q.slice(0, 4);
+            var result = Math.floor(Math.random() * 9999999999);
+
+            document.getElementById('SaleOrder').value = result;
+        }
+    </script>*@
+
+
+
+@*<script type="text/javascript">
+        var tab = '@TempData["AddPaperTrn"]';
+            $(function () {
+                if (tab == "AddPapaerTrn") {
+                    $('#divCreateItem').load('@Url.Action("AddProduct", "DistributorSale")');
+
+                }
+            });
+
+    </script>*@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#RetailerId").change(function () {
+
+            $("#PrvBalanceAmount").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetRetailerPrevBal")',
+                dataType: 'json',
+                data: { RetailerId: $("#RetailerId").val() },
+
+                success: function (RetailerPrevBaldata) {
+                    document.getElementById('PrvBalanceAmount').value = RetailerPrevBaldata;
+                },
+                error: function (ex) {
+                    alert('No Record Found For This Retailer Please Select Another Retailer');
+                    document.getElementById('PrvBalanceAmount').value = 0.0;
+                }
+            });
+            return false;
+        })
+
+
+    });
+
+</script>
+
+
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <i class="ik ik-edit bg-blue"></i>
+                <div class="d-inline">
+                    <h5>Create Distributor Transaction For Return</h5>
+                    <span>You can create Retailer Transaction  with the help of Distributorship</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-lg-8">
+    @if (TempData["MessageRegistration"] != null)
+            {
+        <div class="alert  alert-success alert-dismissible" role="alert">
+            @*<span class="badge badge-pill badge-success">Success</span>*@@TempData["MessageRegistration"]
+            <button type="button" onclick="showSuccessToast()" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h3>Distributor Transaction</h3></div>
+            <div class="card-body">
+                <div class="forms-sample">
+
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.TransDate)
+                                @Html.TextBoxFor(model => model.TransDate, new { @class = "form-control", @type = "date" })
+                                @Html.ValidationMessageFor(model => model.TransDate, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.RetailerId)
+                                @Html.DropDownListFor(model => model.RetailerId, new SelectList(Model.ListRetailer, "RetailerId", "RetailerName"), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.RetailerId, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.ReturnOrder)
+                                @Html.TextBoxFor(model => model.ReturnOrder, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ReturnOrder, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(model => model.PrvBalanceAmount, new { @class = "form-control", @style = "display:none;" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <button class="btn btn-warning" type="submit" style="margin-top: 30px;" value="Create"><i class="ik ik-clipboard"></i> Create Order </button>
+                            </div>
+                        </div>
+
+
+                    }
+
+                </div>
+
+
+
+            </div>
+
+            <div class="card-body">
+                <div class="panel panel-default" id="divCreateItem">
+                    @*@{Html.RenderAction("AddProductV","DistributorSale");}*@
+
+                </div>
+
+            </div>
+            <div class="card-body">
+                <div class="panel panel-default" id="divBindItem">
+                    @*@{Html.RenderAction("AddProductV","DistributorSale");}*@
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 

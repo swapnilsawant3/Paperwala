@@ -11,7 +11,7 @@ namespace PAPERWALA.Models
     {
         [Key]
         public int LineId { get; set; }
-        [Display(Name = "State Name")]
+        [Display(Name = "Line Name")]
         [Required(ErrorMessage = "Please Enter Line Name")]
         public string LineName { get; set; }
 
@@ -21,15 +21,16 @@ namespace PAPERWALA.Models
         [Display(Name = "State Name")]
         public string StateName { get; set; }
 
-
+        public int? CityId { get; set; }
 
         [Display(Name = "City Name")]
         [Required(ErrorMessage = "Please Enter City Name")]
-        [Remote("CityNameExists", "City", HttpMethod = "POST", ErrorMessage = "City Name Already Exists ")]
+       
         public string CityName { get; set; }
-
+        public int? ShopkeeperId { get; set; }
         [NotMapped]
         public IEnumerable<StateDTO> ListState { get; set; }
+        public IEnumerable<CityDTO> ListCity { get; set; }
         public int? CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
         public int? ModifiedBy { get; set; }
