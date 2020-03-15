@@ -15,7 +15,7 @@ namespace PAPERWALA.Repository
         IEnumerable<DistributorReturnDTO> GetDistributorReturns(string DistributorId); // R
 
         IEnumerable<DistributorReturnDTO> GetDistributorReturnsAPI(string DistributorId); // R
-        IEnumerable<DistributorReturnDTO> GetDistributorReturnsTransactionByReturnOrderAPI(string DistributorId, string ReturnOrder); // R
+        IEnumerable<DistributorReturnDTO> GetDistributorReturnsMainTransactionByReturnOrderAPI( string ReturnOrder); // R
 
         // DistributorTransactionDTO GetPaperRateByID(string PaperRateId); // R
         //void UpdateDistributorReturn(DistributorReturnDTO DistributorTrans); //U

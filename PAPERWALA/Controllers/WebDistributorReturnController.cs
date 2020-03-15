@@ -47,13 +47,13 @@ namespace PAPERWALA.Controllers
             return objDistributorReturn.GetDistributorReturnsAPI(DistributorId);
         }
 
+       
         [HttpGet]
-        [Route("api/webdistributorreturn/GetSaleDetailsByReturnOrder")]
-        public IEnumerable<DistributorReturnDTO> GetSaleDetailsByReturnOrder(string DistributorId, string ReturnOrder)
+        [Route("api/webdistributorreturn/GetReturnMainDetailsByReturnOrder")]
+        public IEnumerable<DistributorReturnDTO> GetReturnMainDetailsByReturnOrder( string ReturnOrder)
         {
-            return objDistributorReturn.GetDistributorReturnsTransactionByReturnOrderAPI(DistributorId, ReturnOrder);
+            return objDistributorReturn.GetDistributorReturnsMainTransactionByReturnOrderAPI( ReturnOrder);
         }
-
 
 
 
