@@ -90,7 +90,13 @@ namespace PAPERWALA.Controllers
         {
             return objDistributorSale.GetDistributorSalesTransactionBySaleOrderAPI(DistributorId,SaleOrder);
         }
-
+        [HttpGet]
+        [Route("api/webdistributor/GetSaleMainDetailsBySaleOrder")]
+        public IEnumerable<DistributorSaleDTO> GetSaleMainDetailsBySaleOrder( string SaleOrder)
+        {
+            return objDistributorSale.GetDistributorSalesMainTransactionBySaleOrderAPI( SaleOrder);
+        }
+        
         [HttpGet]
         [Route("api/webdistributor/GetRetailerCount")]
         public string GetRetailerCount(string DistributorId)

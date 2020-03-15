@@ -16,6 +16,7 @@ namespace PAPERWALA.Repository
 
         IEnumerable<DistributorSaleDTO> GetDistributorSalesAPI(string DistributorId); // R
         IEnumerable<DistributorSaleDTO> GetDistributorSalesTransactionBySaleOrderAPI(string DistributorId,string SaleOrder); // R
+        IEnumerable<DistributorSaleDTO> GetDistributorSalesMainTransactionBySaleOrderAPI( string SaleOrder); // R
         
         // DistributorTransactionDTO GetPaperRateByID(string PaperRateId); // R
         //void UpdateDistributorSale(DistributorSaleDTO DistributorTrans); //U

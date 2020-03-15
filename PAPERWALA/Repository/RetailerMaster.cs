@@ -49,7 +49,7 @@ namespace PAPERWALA.Repository
             
                 var para = new DynamicParameters();
                 para.Add("@DistributorId", DistributorId); // Normal Parameters  
-                var Listscheme = con.Query<RetailerDTO>("select r.RetailerName,r.RetailerId,r.Area,r.CityId,r.StateId, r.RemainingAMT from Mst_Retailer AS r LEFT JOIN Mst_City AS ct ON r.CityId=ct.CityId  left join Mst_State as st on r.StateId=st.StateId Where r.DeleteStatus='ACTIVE' and r.DistributorId=@DistributorId ORDER BY RetailerId as DESC", para, null, true, 0, CommandType.Text).ToList();
+                var Listscheme = con.Query<RetailerDTO>("select r.RetailerName,r.RetailerId,r.Area,r.CityId,r.StateId, r.RemainingAMT from Mst_Retailer AS r LEFT JOIN Mst_City AS ct ON r.CityId=ct.CityId  left join Mst_State as st on r.StateId=st.StateId Where r.DeleteStatus='ACTIVE' and r.DistributorId=@DistributorId ORDER BY RetailerId  DESC", para, null, true, 0, CommandType.Text).ToList();
                 con.Close();
                 return Listscheme;
            

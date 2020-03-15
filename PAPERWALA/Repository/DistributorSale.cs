@@ -160,6 +160,22 @@ namespace PAPERWALA.Repository
             finally { con.Close(); }
 
         }
+        public IEnumerable<DistributorSaleDTO> GetDistributorSalesMainTransactionBySaleOrderAPI(string SaleOrder)
+        {
+            try
+            {
+                con.Open();
+                var para = new DynamicParameters();
+                para.Add("@SaleOrder", SaleOrder);// Normal Parameters  
+                var ListDistributorTrans = con.Query<DistributorSaleDTO>("select *,rt.RetailerName from Main_DistrbutorSaleInfo AS dt  JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='COMPLETE' and dt.SaleOrder=@SaleOrder", para, null, true, 0, CommandType.Text).ToList();
+                return ListDistributorTrans;
+            }
+            catch (Exception e) { throw; }
+            finally { con.Close(); }
+
+        }
+
+       
         public void DeleteDistributorSale(string DistributorSaleId)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Mystring"].ToString()))
