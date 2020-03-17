@@ -137,7 +137,7 @@ namespace PAPERWALA.Repository
                 con.Open();
                 var para = new DynamicParameters();
                 para.Add("@DistributorId", DistributorId); // Normal Parameters  
-                var ListDistributorTrans = con.Query<DistributorReturnDTO>("select dt.*,rt.RetailerName from Main_DistributorReturnInfo AS dt LEFT JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='COMPLETE' and dt.DistributorId=@DistributorId", para, null, true, 0, CommandType.Text).ToList();
+                var ListDistributorTrans = con.Query<DistributorReturnDTO>("select dt.*,rt.RetailerName from Main_DistributorReturnInfo AS dt LEFT JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='COMPLETE' and dt.DistributorId=@DistributorId Order by DistributorReturnId DESC", para, null, true, 0, CommandType.Text).ToList();
                 return ListDistributorTrans;
             }
             catch (Exception e) { throw; }

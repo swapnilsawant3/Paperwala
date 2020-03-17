@@ -51,11 +51,26 @@ namespace PAPERWALA.Repository
             
                 var para = new DynamicParameters();
                 para.Add("@DistributorId", DistributorId); // Normal Parameters  
-                var Listscheme = con.Query<RetailerDTO>("select r.RetailerName,r.RetailerId,r.Area,r.CityId,r.StateId, r.RemainingAMT from Mst_Retailer AS r LEFT JOIN Mst_City AS ct ON r.CityId=ct.CityId  left join Mst_State as st on r.StateId=st.StateId Where r.DeleteStatus='ACTIVE' and r.DistributorId=@DistributorId ORDER BY RetailerId  DESC", para, null, true, 0, CommandType.Text).ToList();
+                var Listscheme = con.Query<RetailerDTO>("select r.*, ct.CityName,ct.CityId,st.StateId,st.StateName from Mst_Retailer AS r LEFT JOIN Mst_City AS ct ON r.CityId=ct.CityId  left join Mst_State as st on r.StateId=st.StateId Where r.DeleteStatus='ACTIVE' and r.DistributorId=@DistributorId ORDER BY RetailerId  DESC", para, null, true, 0, CommandType.Text).ToList();
                 con.Close();
                 return Listscheme;
            
             
+        }
+        public IEnumerable<RetailerDTO> webGetDistributorByDistributorId(string DistributorId)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            var para = new DynamicParameters();
+            para.Add("@DistributorId", DistributorId); // Normal Parameters  
+            var Listscheme = con.Query<RetailerDTO>("select r.*, ct.CityName,ct.CityId,st.StateId,st.StateName from Mst_Distributor AS r LEFT JOIN Mst_City AS ct ON r.CityId=ct.CityId  left join Mst_State as st on r.StateId=st.StateId Where r.DeleteStatus='ACTIVE' and r.DistributorId=@DistributorId", para, null, true, 0, CommandType.Text).ToList();
+            con.Close();
+            return Listscheme;
+
+
         }
         public IEnumerable<RetailerDTO> webGetRetailerById(string RetailerId)
         {
@@ -80,7 +95,7 @@ namespace PAPERWALA.Repository
                 con.Open();
                 var para = new DynamicParameters();
                 para.Add("@DistributorId", HttpContext.Current.Session["UserID"]); // Normal Parameters  
-                var Listscheme = con.Query<RetailerDTO>("select r.*,ct.CityName,ct.CityId,st.StateId,st.StateName from Mst_Retailer AS r LEFT JOIN Mst_City AS ct ON r.CityId=ct.CityId  left join Mst_State as st on r.StateId=st.StateId Where r.DeleteStatus='ACTIVE' and r.DistributorId=@DistributorId", para, null, true, 0, CommandType.Text).ToList();
+                var Listscheme = con.Query<RetailerDTO>("select r.*,ct.CityName,ct.CityId,st.StateId,st.StateName from Mst_Retailer AS r LEFT JOIN Mst_City AS ct ON r.CityId=ct.CityId  left join Mst_State as st on r.StateId=st.StateId Where r.DeleteStatus='ACTIVE' and r.DistributorId=@DistributorId ORDER BY RetailerId  DESC", para, null, true, 0, CommandType.Text).ToList();
                 return Listscheme;
             }
             catch (Exception e) { throw; }
