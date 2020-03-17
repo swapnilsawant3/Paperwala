@@ -9,6 +9,7 @@ namespace PAPERWALA.Repository
     public interface IRetailerMaster
     {
         void InsertRetailer(RetailerDTO retailer); // C
+       
         IEnumerable<RetailerDTO> GetRetailers(string DistributorId); // R
         IEnumerable<RetailerDTO> webGetRetailers(string DistributorId); // R
         IEnumerable<RetailerDTO> webGetRetailerById(string RetailerId); // R

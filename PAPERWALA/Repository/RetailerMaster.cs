@@ -16,7 +16,7 @@ namespace PAPERWALA.Repository
        
         public void InsertRetailer(RetailerDTO retailer)
         {
-            //con.Open();
+            con.Open();
             var para = new DynamicParameters();
             para.Add("@RetailerId", retailer.RetailerId); // Normal Parameters  
             para.Add("@RetailerName", retailer.RetailerName);
@@ -39,6 +39,8 @@ namespace PAPERWALA.Repository
             var value = con.Query<int>("SP_Insert_Update_RetailerMaster", para, null, true, 0, CommandType.StoredProcedure);
             con.Close();
         }
+
+       
 
         public IEnumerable<RetailerDTO> webGetRetailers(string DistributorId)
         {

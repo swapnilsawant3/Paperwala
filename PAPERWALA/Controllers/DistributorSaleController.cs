@@ -82,7 +82,8 @@ namespace PAPERWALA.Controllers
                         Session["TransDate"]= obj.TransDate.ToShortDateString();
                         ViewBag.VRetailerId = obj.RetailerId;
                         Session["SaleOrder"] = obj.SaleOrder;
-                        Session["PrvBalanceRetailer"] = obj.PrvBalanceAmount;
+                    Session["RetailerId"] = obj.RetailerId;
+                    Session["PrvBalanceRetailer"] = obj.PrvBalanceAmount;
                         return RedirectToAction("AddProductT");
 
 
@@ -131,6 +132,7 @@ namespace PAPERWALA.Controllers
             {
                 try
                 {
+                
 
                     if (string.IsNullOrEmpty(Convert.ToString(obj.PaperId)))
                     {
@@ -149,6 +151,7 @@ namespace PAPERWALA.Controllers
 
                     
                         objdistributorsale.InsertDistributorSaleProduct(obj);
+                   
                         TempData["MessageRegistration"] = "Data Saved Successfully!";
                         TempData["AddPaperTrn"] = "AddPapaerTrn";
                         TempData["UpdtDistTrn"] = "UpdtDistTrn";
@@ -208,6 +211,7 @@ namespace PAPERWALA.Controllers
 
 
                         objdistributorsale.UpdateDistributorSale(obj);
+                       
                         TempData["MessageRegistration"] = "Data Saved Successfully!";
                         TempData["AddPaperTrn"] = "AddPapaerTrn";
                         TempData["UpdtDistTrn"] = "UpdtDistTrn";
