@@ -156,6 +156,16 @@ namespace PAPERWALA.Repository
                 return VPassword;
             }
         }
+        public string GetSumBalanceAmount(string DistId)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Mystring"].ToString()))
+            {
+                var para = new DynamicParameters();
+                para.Add("@DistributorId", DistId);
+                var VPassword = con.Query<string>("Usp_SumBalanceAMT_By_DistributorId", para, null, true, 0, CommandType.StoredProcedure).SingleOrDefault();
+                return VPassword;
+            }
+        }
         public void DeleteDistributor(string DistributorId)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Mystring"].ToString()))

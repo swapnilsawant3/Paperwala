@@ -124,7 +124,7 @@ namespace PAPERWALA.Repository
                 con.Open();
                 var para = new DynamicParameters();
                 para.Add("@DistributorId", HttpContext.Current.Session["UserID"]); // Normal Parameters  
-                var ListDistributorTrans = con.Query<DistributorSaleDTO>("select dt.*,rt.RetailerName from Main_DistrbutorSaleInfo AS dt LEFT JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='ACTIVE' and dt.DistributorId=@DistributorId", para, null, true, 0, CommandType.Text).ToList();
+                var ListDistributorTrans = con.Query<DistributorSaleDTO>("select * from Main_DistrbutorSaleInfo AS dt left join Main_DistrbutorSaleProduct as sp on dt.SaleOrder=sp.SaleOrder LEFT JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='ACTIVE' and dt.DistributorId=@DistributorId", para, null, true, 0, CommandType.Text).ToList();
                 return ListDistributorTrans;
             }
             catch (Exception e) { throw; }
@@ -153,7 +153,7 @@ namespace PAPERWALA.Repository
                 var para = new DynamicParameters();
                 para.Add("@DistributorId", DistributorId);
                 para.Add("@SaleOrder", SaleOrder);// Normal Parameters  
-                var ListDistributorTrans = con.Query<DistributorSaleDTO>("select dt.*,dp.*,rt.RetailerName from Main_DistrbutorSaleInfo AS dt left join Main_DistrbutorSaleProduct as dp on dt.SaleOrder=dp.SaleOrder LEFT JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='COMPLETE' and dt.DistributorId=@DistributorId and dt.SaleOrder=@SaleOrder", para, null, true, 0, CommandType.Text).ToList();
+                var ListDistributorTrans = con.Query<DistributorSaleDTO>("select dt.*,dp.*,rt.RetailerName from Main_DistrbutorSaleInfo AS dt left join Main_DistrbutorSaleProduct as dp on dt.SaleOrder=dp.SaleOrder LEFT JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='COMPLETE' and dt.DistributorId=@DistributorId and dt.SaleOrder=@SaleOrder ", para, null, true, 0, CommandType.Text).ToList();
                 return ListDistributorTrans;
             }
             catch (Exception e) { throw; }
@@ -167,7 +167,7 @@ namespace PAPERWALA.Repository
                 con.Open();
                 var para = new DynamicParameters();
                 para.Add("@SaleOrder", SaleOrder);// Normal Parameters  
-                var ListDistributorTrans = con.Query<DistributorSaleDTO>("select *,rt.RetailerName from Main_DistrbutorSaleInfo AS dt  JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='COMPLETE' and dt.SaleOrder=@SaleOrder", para, null, true, 0, CommandType.Text).ToList();
+                var ListDistributorTrans = con.Query<DistributorSaleDTO>("select *,rt.RetailerName from Main_DistrbutorSaleInfo AS dt  JOIN Mst_Retailer AS rt ON dt.RetailerId=rt.RetailerId where dt.DeleteStatus='COMPLETE' and dt.SaleOrder=@SaleOrder  ORDER BY DistributorSaleId DESC", para, null, true, 0, CommandType.Text).ToList();
                 return ListDistributorTrans;
             }
             catch (Exception e) { throw; }

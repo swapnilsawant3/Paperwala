@@ -104,6 +104,13 @@ namespace PAPERWALA.Controllers
             return objRetailerAll.GetRetailerCount(DistributorId);
         }
 
+        [HttpGet]
+        [Route("api/webdistributor/GetSumOfBalanceAmountByDistributorId")]
+        public string GetSumOfBalanceAmountByDistributorId(string DistributorId)
+        {
+            return objdistributor.GetSumBalanceAmount(DistributorId);
+        }
+
         //POST SECTION   ---------------------------% ****************************************************
 
 

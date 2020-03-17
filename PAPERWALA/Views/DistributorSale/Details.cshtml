@@ -32,6 +32,7 @@
                         <thead>
                             <tr>
                                 <th>Date</th>
+                                <th>Retailer</th>
                                 <th>Paper</th>
                                 <th>Price</th>
                                 <th>Quant</th>
@@ -44,7 +45,7 @@
                                 <th>Bal</th>
                                 <th>prev Bal</th>
                                 <th>Final Bal</th>
-                                <th>Status</th>
+                                
                                 <th>Delete </th>
                             </tr>
                         </thead>
@@ -55,7 +56,8 @@
                                 {
                                     <tr>
                                         <td>@item.TransDate.ToShortDateString()</td>
-                                        <td>@item.PaperName</td>s
+                                        <td>@item.RetailerName</td>
+                                        <td>@item.PaperName</td>
                                         <td>@item.PaperRate</td>
                                         <td>@item.PaperQuantity</td>
                                         <td>@item.TotalPrice</td>
@@ -67,7 +69,7 @@
                                         <td>@item.BalanceAmount</td>
                                         <td>@item.PrvBalanceAmount</td>
                                         <td>@item.FinalBalaceAmount</td>
-                                        <td>@item.DeleteStatus</td>
+                                       
                                         <td>@Html.ActionLink("Delete", "Delete", new { id = @item.DistributorSaleId }, new { onclick = "return confirm('Are you sure you wish to delete this Transaction?');" })</td>
                                     </tr>
                                 }

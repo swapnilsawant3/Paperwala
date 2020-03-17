@@ -17,6 +17,8 @@ namespace PAPERWALA.Repository
         void UpdateDistributor(DistributorDTO distributor); //U
 
         string GetPassword(string Password);//C-P
+        string GetSumBalanceAmount(string DistId);//C-P
+        
         string GetPasswordAPI(string Password);//API
         void DeleteDistributor(string DistributorId); //D
         //void Save();
