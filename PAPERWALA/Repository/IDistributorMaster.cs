@@ -13,6 +13,7 @@ namespace PAPERWALA.Repository
         void ChangePassword(DistributorDTO distributor); // C
         void ChangePasswordAPI(DistributorDTO distributor); // C
         IEnumerable<DistributorDTO> GetDistributors(); // R
+        IEnumerable<DistributorDTO> webGetDistributorByDistributorId(string DistributorId); // R
         DistributorDTO GetDistributorByID(string DistributorId); // R
         void UpdateDistributor(DistributorDTO distributor); //U
 

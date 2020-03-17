@@ -12,7 +12,7 @@ namespace PAPERWALA.Repository
        
         IEnumerable<RetailerDTO> GetRetailers(string DistributorId); // R
         IEnumerable<RetailerDTO> webGetRetailers(string DistributorId); // R
-        IEnumerable<RetailerDTO> webGetDistributorByDistributorId(string DistributorId); // R
+       
         
         IEnumerable<RetailerDTO> webGetRetailerById(string RetailerId); // R
         RetailerDTO GetRetailerByID(string RetailerId); // R

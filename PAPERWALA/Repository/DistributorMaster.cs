@@ -51,6 +51,21 @@ namespace PAPERWALA.Repository
             con.Close();
             return Listscheme;
         }
+        public IEnumerable<DistributorDTO> webGetDistributorByDistributorId(string DistributorId)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            var para = new DynamicParameters();
+            para.Add("@DistributorId", DistributorId); // Normal Parameters  
+            var Listscheme = con.Query<DistributorDTO>("select r.*, ct.CityName,ct.CityId,st.StateId,st.StateName from Mst_Distributor AS r LEFT JOIN Mst_City AS ct ON r.CityId=ct.CityId  left join Mst_State as st on r.StateId=st.StateId Where r.DeleteStatus='ACTIVE' and r.DistributorId=@DistributorId", para, null, true, 0, CommandType.Text).ToList();
+            con.Close();
+            return Listscheme;
+
+
+        }
 
         public int GetDistributorCount()
         {

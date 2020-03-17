@@ -30,9 +30,9 @@ namespace PAPERWALA.Controllers
 
         [HttpGet]
         [Route("api/webdistributor/GetDistributorInfoByDistributorId")]
-        public IEnumerable<RetailerDTO> GetDistributorInfoByDistributorI(string DistributorId)
+        public IEnumerable<DistributorDTO> GetDistributorInfoByDistributorI(string DistributorId)
         {
-            return objRetailerAll.webGetDistributorByDistributorId(DistributorId);
+            return objdistributor.webGetDistributorByDistributorId(DistributorId);
         }
 
         [HttpGet]
