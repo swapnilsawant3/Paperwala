@@ -307,6 +307,18 @@ namespace PAPERWALA.Repository
                 return ListPaperbyCityId;
             }
         }
+
+        public IEnumerable<DistributorSaleProductDTO> GetPaperByCityIdnDistributor(string CityId, string DistributorId)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Mystring"].ToString()))
+            {
+                var paramater = new DynamicParameters();
+                paramater.Add("@CityId", HttpContext.Current.Session["CityID"].ToString());
+                paramater.Add("@DistributorId", HttpContext.Current.Session["UserID"].ToString());
+                var ListPaperbyCityIdnDistId = con.Query<DistributorSaleProductDTO>("Usp_GetPaperByCityIdnDistributorId", paramater, null, true, 0, CommandType.StoredProcedure);
+                return ListPaperbyCityIdnDistId;
+            }
+        }
         public string GetFinalAmount_By_SaleOrder(string SaleOrder)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Mystring"].ToString()))

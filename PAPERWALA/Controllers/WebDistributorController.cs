@@ -50,6 +50,13 @@ namespace PAPERWALA.Controllers
         }
 
         [HttpGet]
+        [Route("api/webdistributor/BindPaperListByCityIdnDistributorId")]
+        public IEnumerable<PaperDTO> BindPaperListByCityIdnDistributorId(string CityId,string DistributorId)
+        {
+            return objpaper.GetPaperByCityIdnDistributorId(CityId,DistributorId);
+        }
+
+        [HttpGet]
         [Route("api/webdistributor/GetPaperRate")]
         public string GetPaperRate(string PaperId, string Tdate)
         {

@@ -348,6 +348,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineController.cs" />
     <Compile Include="Controllers\LoginDistributorController.cs" />
+    <Compile Include="Controllers\PaperAllocationDistributorController.cs" />
     <Compile Include="Controllers\PaperController.cs" />
     <Compile Include="Controllers\PaperRateController.cs" />
     <Compile Include="Controllers\RetailerController.cs" />
@@ -373,6 +374,7 @@
     <Compile Include="Models\DistributorTransactionDTO.cs" />
     <Compile Include="Models\LineDTO.cs" />
     <Compile Include="Models\LoginDistributorDTO.cs" />
+    <Compile Include="Models\PaperAllocationDistributorDTO.cs" />
     <Compile Include="Models\PaperDTO.cs" />
     <Compile Include="Models\PaperRateCallDTO.cs" />
     <Compile Include="Models\PaperRateDTO.cs" />
@@ -398,6 +400,7 @@
     <Compile Include="Repository\IDistributorTransactions.cs" />
     <Compile Include="Repository\ILineMaster.cs" />
     <Compile Include="Repository\ILoginDistributor.cs" />
+    <Compile Include="Repository\IPaperAllocationDistributorMaster.cs" />
     <Compile Include="Repository\IPaperMaster.cs" />
     <Compile Include="Repository\IPaperRateMaster.cs" />
     <Compile Include="Repository\IRetailerMaster.cs" />
@@ -405,6 +408,7 @@
     <Compile Include="Repository\IStateMaster.cs" />
     <Compile Include="Repository\LineMaster.cs" />
     <Compile Include="Repository\LoginDistributor.cs" />
+    <Compile Include="Repository\PaperAllocationDistributorMaster.cs" />
     <Compile Include="Repository\PaperMaster.cs" />
     <Compile Include="Repository\PaperRateMaster.cs" />
     <Compile Include="Repository\RetailerMaster.cs" />
@@ -525,6 +529,8 @@
     <Content Include="Views\Line\Create.cshtml" />
     <Content Include="Views\Line\Edit.cshtml" />
     <Content Include="Views\Line\Details.cshtml" />
+    <Content Include="Views\PaperAllocationDistributor\Create.cshtml" />
+    <Content Include="Views\PaperAllocationDistributor\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

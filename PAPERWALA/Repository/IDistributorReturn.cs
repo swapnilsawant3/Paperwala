@@ -37,6 +37,7 @@ namespace PAPERWALA.Repository
         void DeleteDistributorReturnProduct(string DistributorReturnProductId); //D
         //IEnumerable<DistributorReturnProductDTO> GetRetailerByDistributerId(string DistributorId); // R
         IEnumerable<DistributorReturnProductDTO> GetPaperByCityId(string CityId); // R
+        IEnumerable<DistributorReturnProductDTO> GetPaperByCityIdnDistributor(string CityId, string DistributorId); // R
         string GetFinalAmount_By_ReturnOrder(string ReturnOrder);
         string GetFinalAmount_By_ReturnOrder_API(string ReturnOrder);
     }

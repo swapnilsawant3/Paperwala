@@ -38,6 +38,8 @@ namespace PAPERWALA.Repository
         void DeleteDistributorSaleProduct(string DistributorSaleProductId); //D
         //IEnumerable<DistributorSaleProductDTO> GetRetailerByDistributerId(string DistributorId); // R
         IEnumerable<DistributorSaleProductDTO> GetPaperByCityId(string CityId); // R
+        IEnumerable<DistributorSaleProductDTO> GetPaperByCityIdnDistributor(string CityId, string DistributorId); // R
+        
         string GetFinalAmount_By_SaleOrder(string SaleOrder);
         string GetFinalAmount_By_SaleOrder_API(string SaleOrder);
 

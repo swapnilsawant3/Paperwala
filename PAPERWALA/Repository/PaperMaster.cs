@@ -135,5 +135,27 @@ namespace PAPERWALA.Repository
             }
         }
 
+        public IEnumerable<PaperDTO> GetPaperByCityIdnDistributorId(string CityId,string DistributorId)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Mystring"].ToString()))
+            {
+                var paramater = new DynamicParameters();
+                paramater.Add("@CityId", CityId);
+                paramater.Add("@DistributorId", DistributorId);
+                var Plan_list = con.Query<PaperDTO>("Usp_GetPaperByCityIdnDistributorId", paramater, null, true, 0, CommandType.StoredProcedure);
+                return Plan_list;
+            }
+        }
+        public IEnumerable<PaperDTO> GetPaperByCityIdBySession(string CityId)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Mystring"].ToString()))
+            {
+                var paramater = new DynamicParameters();
+                paramater.Add("@CityId", HttpContext.Current.Session["CityId"]);
+                var Plan_list = con.Query<PaperDTO>("Usp_GetPaperByCityId", paramater, null, true, 0, CommandType.StoredProcedure);
+                return Plan_list;
+            }
+        }
+
     }
 }

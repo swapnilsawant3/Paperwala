@@ -111,10 +111,10 @@ namespace PAPERWALA.Controllers
                 return PartialView("AddProduct", model);
             }
             [HttpGet]
-            public ActionResult AddProductT(string tri)
+            public ActionResult AddProductT(string cityID, string DistributorID)
             {
                 DistributorSaleProductDTO objDT = new DistributorSaleProductDTO();
-                objDT.ListPaperbyDistId = BindListPaperL(tri);
+                objDT.ListPaperbyDistId = BindListPaperL(cityID, DistributorID);
                 objDT.SaleOrder = Session["SaleOrder"].ToString();
                 string selectDate = Session["TransDate"].ToString();
                 string D = Convert.ToDateTime(selectDate).ToString("yyyy-MM-dd");
@@ -128,7 +128,7 @@ namespace PAPERWALA.Controllers
             }
 
             [HttpPost]
-            public ActionResult AddProductT(DistributorSaleProductDTO obj, FormCollection frm, string tri)
+            public ActionResult AddProductT(DistributorSaleProductDTO obj, FormCollection frm, string cityID, string DistributorID)
             {
                 try
                 {
@@ -161,7 +161,7 @@ namespace PAPERWALA.Controllers
 
                     }
                     // obj.ListRetailer = BindListRetailer(tri);
-                    obj.ListPaperbyDistId = BindListPaperL(tri);
+                    obj.ListPaperbyDistId = BindListPaperL(cityID, DistributorID);
                     //obj.ListCity = BindListCity();
                     // ViewData["SelectedrRetailer"] = obj.RetailerId;
                     ViewData["SelectedPaper"] = obj.PaperId;
@@ -271,12 +271,12 @@ namespace PAPERWALA.Controllers
             }
 
             [NonAction]
-            public IEnumerable<PaperDTO> BindListPaperL(string CityId)
+            public IEnumerable<PaperDTO> BindListPaperL(string CityId, String DistributorId)
             {
                 List<PaperDTO>
                 ListPaper = new List<PaperDTO>() { new PaperDTO { PaperId = 0, PaperName = "Select" } };
 
-                foreach (var item in objdistributorsale.GetPaperByCityId(CityId))
+                foreach (var item in objdistributorsale.GetPaperByCityIdnDistributor(CityId, DistributorId))
                 {
                     PaperDTO P = new PaperDTO();
                     P.PaperId = item.PaperId;
