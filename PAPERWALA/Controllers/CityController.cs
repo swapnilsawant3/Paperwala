@@ -9,7 +9,7 @@ using PAPERWALA.Repository;
 
 namespace PAPERWALA.Controllers
 {
-   // [MyExceptionHandler]
+    [MyExceptionHandler]
     public class CityController : Controller
     {
         ICityMaster objICityMaster;

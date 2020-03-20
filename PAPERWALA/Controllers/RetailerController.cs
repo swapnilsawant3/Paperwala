@@ -9,7 +9,7 @@ using PAPERWALA.Repository;
 
 namespace PAPERWALA.Controllers
 {
-    // [MyExceptionHandler]
+     [MyExceptionHandler]
     public class RetailerController : Controller
     {
 

@@ -9,6 +9,7 @@ using PAPERWALA.Repository;
 
 namespace PAPERWALA.Controllers
 {
+    [MyExceptionHandler]
     public class PaperAllocationDistributorController : Controller
     {
         IStateMaster objStateMaster;

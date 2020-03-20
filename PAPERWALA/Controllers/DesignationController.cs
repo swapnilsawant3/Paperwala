@@ -10,6 +10,7 @@ using PAPERWALA.Repository;
 
 namespace PAPERWALA.Controllers
 {
+    [MyExceptionHandler]
     public class DesignationController : Controller
     {
         IDesignationMaster objIDesignationMaster;
