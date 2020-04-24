@@ -1,0 +1,273 @@
+﻿@model PAPERWALA.Models.SalePaperRateDTO
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdminMain.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#StateId").change(function () {
+
+            $("#CityId").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetCity")',
+                dataType: 'json',
+                data: { StateId: $("#StateId").val() },
+                success: function (citydata) {
+
+                    $("#CityId").append('<option value="' + "0" + '">' + "Select" + '</option>');
+
+                    $.each(citydata, function (i, city) {
+                        $("#CityId").append('<option value="' + city.CityId + '">' + city.CityName + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve City.' + ex);
+                }
+            });
+            return false;
+        })
+
+
+    });
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function () { rebindCity(); });
+</script>
+
+<script type="text/javascript">
+
+    function rebindCity() {
+
+        if ('@ViewData["SelectedCity"]' != '') {
+
+            $("#StateId").val('@Model.StateId');
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetCity")',
+                dataType: 'json',
+                data: {
+                    StateId: $("#StateId").val()
+                },
+                success: function (citydata) {
+
+                    $("#CityId").append('<option value="' + "0" + '">' + "Select" + '</option>');
+
+                    $.each(citydata, function (i, city) {
+                        $("#CityId").append('<option value="' + city.CityId + '">' + city.CityName + '</option>');
+                    });
+
+                    if ('@ViewData["SelectedCity"]' != 0) {
+                        $("#CityId").val('@ViewData["SelectedCity"]');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve City.' + ex);
+                }
+            });
+        }
+    }
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#CityId").change(function () {
+
+            $("#PaperId").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetPaper")',
+                dataType: 'json',
+                data: { CityId: $("#CityId").val() },
+                success: function (plandata) {
+
+                    $("#PaperId").append('<option value="' + "0" + '">' + "Select" + '</option>');
+
+                    $.each(plandata, function (i, paper) {
+                        $("#PaperId").append('<option value="' + paper.PapaerId + '">' + paper.PaperName + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Paper.' + ex);
+                }
+            });
+            return false;
+        })
+
+
+    });
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function () { rebindPapers(); });
+</script>
+
+<script type="text/javascript">
+
+    function rebindPapers() {
+
+        if ('@ViewData["SelectedPaper"]' != '') {
+
+            $("#CityId").val('@Model.CityId');
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetPaper")',
+                dataType: 'json',
+                data: {
+                    CityId: $("#CityId").val()
+                },
+                success: function (plandata) {
+
+                    $("#PaperId").append('<option value="' + "0" + '">' + "Select" + '</option>');
+
+                    $.each(plandata, function (i, paper) {
+                        $("#PaperId").append('<option value="' + paper.PapaerId + '">' + paper.PaperName + '</option>');
+                    });
+
+                    if ('@ViewData["SelectedPaper"]' != 0) {
+
+                        $("#PaperId").val('@ViewData["SelectedPaper"]');
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Paper.' + ex);
+                }
+            });
+        }
+    }
+</script>
+
+
+
+
+
+@*//  ***  Start From  ***   //*@
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <i class="ik ik-edit bg-blue"></i>
+                <div class="d-inline">
+                    <h5>Create Sale Paper Rate Master</h5>
+                    <span>You can Assign Sale Paper Rate for Customer to handle Utility.</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="col-lg-8">
+    @if (TempData["MessageRegistration"] != null)
+            {
+        <div class="alert  alert-success alert-dismissible" role="alert">
+            @*<span class="badge badge-pill badge-success">Success</span>*@@TempData["MessageRegistration"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget">
+            <div class="card-header"><h3>Sale Paper Rate Master</h3></div>
+            <div class="card-body">
+                <div class="forms-sample">
+
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.StateName)
+                                @Html.DropDownListFor(model => model.StateId, new SelectList(Model.ListState, "StateId", "StateName"), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.CityName)
+                                @Html.DropDownListFor(model => model.CityId, new SelectList(Model.ListCity, "CityId", "CityName"), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CityId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-4">
+                                @Html.LabelFor(model => model.PaperId)
+                                @Html.DropDownListFor(model => model.PaperId, new SelectList(Model.ListPaper, "PaperId", "PaperName"), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.PaperId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.MondayRate)
+                                @Html.TextBoxFor(model => model.MondayRate, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.MondayRate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.TuesdayRate)
+                                @Html.TextBoxFor(model => model.TuesdayRate, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.TuesdayRate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.WednesdayRate)
+                                @Html.TextBoxFor(model => model.WednesdayRate, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.WednesdayRate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.ThursdayRate)
+                                @Html.TextBoxFor(model => model.ThursdayRate, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ThursdayRate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.FridayRate)
+                                @Html.TextBoxFor(model => model.FridayRate, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.FridayRate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.SaturdayRate)
+                                @Html.TextBoxFor(model => model.SaturdayRate, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.SaturdayRate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-2">
+                                @Html.LabelFor(model => model.SundayRate)
+                                @Html.TextBoxFor(model => model.SundayRate, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.SundayRate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <button class="btn btn-primary" style="margin-top:25px;" type="submit"><i class="ik ik-clipboard"></i> Submit Info</button>
+                            </div>
+                            <div class="form-group col-lg-2">
+
+                                @Html.ActionLink("All SAle Paper Rates", "Details", "SalePaperRate", null, new { @class = "btn btn-success", @style = "margin-top:25px;" })
+                            </div><br />
+
+
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

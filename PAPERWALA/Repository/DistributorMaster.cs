@@ -101,6 +101,7 @@ namespace PAPERWALA.Repository
                 var para = new DynamicParameters();
                 para.Add("@DistributorId", distributor.DistributorId); // Normal Parameters  
                 para.Add("@DistributorName", distributor.DistributorName);
+                para.Add("@ContactPersonName", distributor.ContactPersonName);
                 para.Add("@DesignationId", distributor.DesignationId);
                 para.Add("@Address", distributor.Address);
                 para.Add("@MobileNo", distributor.MobileNo);
@@ -113,7 +114,7 @@ namespace PAPERWALA.Repository
                 para.Add("@DateofBirth", distributor.DateofBirth);
                 para.Add("@UserName", distributor.UserName);
                 para.Add("@Password", distributor.Password);
-                para.Add("@StartDate", distributor.DateofBirth);
+                para.Add("@StartDate", distributor.StartDate);
                 para.Add("@EndDate", distributor.EndDate);
                 para.Add("@CreatedDate", distributor.CreatedDate);
                 para.Add("@CreatedBy", distributor.CreatedBy);

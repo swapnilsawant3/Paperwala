@@ -352,6 +352,7 @@
     <Compile Include="Controllers\PaperController.cs" />
     <Compile Include="Controllers\PaperRateController.cs" />
     <Compile Include="Controllers\RetailerController.cs" />
+    <Compile Include="Controllers\SalePaperRateController.cs" />
     <Compile Include="Controllers\SellerMasterController.cs" />
     <Compile Include="Controllers\StateController.cs" />
     <Compile Include="Controllers\WebDistributorController.cs" />
@@ -376,9 +377,10 @@
     <Compile Include="Models\LoginDistributorDTO.cs" />
     <Compile Include="Models\PaperAllocationDistributorDTO.cs" />
     <Compile Include="Models\PaperDTO.cs" />
-    <Compile Include="Models\PaperRateCallDTO.cs" />
+    <Compile Include="Models\SalePaperRateDTO.cs" />
     <Compile Include="Models\PaperRateDTO.cs" />
     <Compile Include="Models\RetailerDTO.cs" />
+    <Compile Include="Models\SchemeShopkeeperDTO.cs" />
     <Compile Include="Models\SellerDTO.cs" />
     <Compile Include="Models\StateDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -404,6 +406,8 @@
     <Compile Include="Repository\IPaperMaster.cs" />
     <Compile Include="Repository\IPaperRateMaster.cs" />
     <Compile Include="Repository\IRetailerMaster.cs" />
+    <Compile Include="Repository\ISalePaperRateMaster.cs" />
+    <Compile Include="Repository\ISchemeShopkeeper.cs" />
     <Compile Include="Repository\ISellerMaster.cs" />
     <Compile Include="Repository\IStateMaster.cs" />
     <Compile Include="Repository\LineMaster.cs" />
@@ -412,6 +416,8 @@
     <Compile Include="Repository\PaperMaster.cs" />
     <Compile Include="Repository\PaperRateMaster.cs" />
     <Compile Include="Repository\RetailerMaster.cs" />
+    <Compile Include="Repository\SalePaperRateMaster.cs" />
+    <Compile Include="Repository\SchemeShopkeeper.cs" />
     <Compile Include="Repository\SellerMaster.cs" />
     <Compile Include="Repository\StateMaster.cs" />
   </ItemGroup>
@@ -531,6 +537,9 @@
     <Content Include="Views\Line\Details.cshtml" />
     <Content Include="Views\PaperAllocationDistributor\Create.cshtml" />
     <Content Include="Views\PaperAllocationDistributor\Details.cshtml" />
+    <Content Include="Views\SalePaperRate\Create.cshtml" />
+    <Content Include="Views\SalePaperRate\Edit.cshtml" />
+    <Content Include="Views\SalePaperRate\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

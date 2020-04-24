@@ -1,4 +1,5 @@
-﻿@model IEnumerable<PAPERWALA.Models.PaperRateDTO>
+﻿@model IEnumerable<PAPERWALA.Models.SalePaperRateDTO>
+
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutAdminMain.cshtml";
@@ -11,8 +12,8 @@
             <div class="page-header-title">
                 <i class="ik ik-layers bg-red"></i>
                 <div class="d-inline">
-                    <h5>Paper Name with Rate List</h5>
-                    <span>Here you can see all Paper with Rate and cityes with state</span>
+                    <h5>Sale Paper Name with Rate List</h5>
+                    <span>Here you can see all Sale Paper with Rate and cityes with state</span>
                 </div>
             </div>
         </div>
@@ -23,7 +24,7 @@
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header d-block">
-                <h3> Paper Rate List  | <span> @Html.ActionLink("Create Paper Rate ", "Create", "PaperRate", new { @class = "btn btn-info btn-default" }) </span></h3>
+                <h3> Sale Paper Rate List  | <span> @Html.ActionLink("Create Sale Paper Rate ", "Create", "SalePaperRate", new { @class = "btn btn-info btn-default" }) </span></h3>
             </div>
             <div class="card-body">
                 <div class="dt-responsive">
@@ -62,8 +63,8 @@
                                         <td>@item.SaturdayRate</td>
                                         <td>@item.SundayRate</td>
 
-                                        <td>@Html.ActionLink("Edit", "Edit", new { id = @item.PaperRateId })</td>
-                                        <td>@Html.ActionLink("Delete", "Delete", new { id = @item.PaperRateId }, new { onclick = "return confirm('Are you sure you wish to delete this Paper Rate?');" })</td>
+                                        <td>@Html.ActionLink("Edit", "Edit", new { id = @item.SalePaperRateId })</td>
+                                        <td>@Html.ActionLink("Delete", "Delete", new { id = @item.SalePaperRateId }, new { onclick = "return confirm('Are you sure you wish to delete this Sale Paper Rate?');" })</td>
                                     </tr>
                                 }
 
@@ -75,6 +76,5 @@
         </div>
     </div>
 </div>
-
 
 
